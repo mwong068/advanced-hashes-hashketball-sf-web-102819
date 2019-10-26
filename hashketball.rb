@@ -133,17 +133,13 @@ def shoe_size(player_name_input)
 end
 
 
-### Find the team colors of a specific team
-
-def team_colors(team)
-  colors = nil
+def team_colors(team_name_input)
   
-  game_hash.each do |location, team_data|
-    if team_data[:team_name] == team
-      colors = team_data[:colors]
+  game_hash.each do |team_sides, team_info|
+    if team_info[:team_name] == team_name_input
+      return team_info[:colors]
     end
   end
-  colors
 end
 
 
