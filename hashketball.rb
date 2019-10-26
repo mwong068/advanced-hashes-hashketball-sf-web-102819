@@ -235,7 +235,7 @@ def player_with_longest_name
   
   game_hash.each do |team_sides, team_info|
     team_info[:players].each do |player_name, player_info|
-      all_players = players.push(player_name)
+      all_players = all_players.push(player_name)
     end
   end
   longest_name = all_players.max_by(&:length)
