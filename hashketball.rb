@@ -218,14 +218,14 @@ def winning_team
   away_score = 0
   away_team = game_hash[:away][:team_name]
   
-  (game_hash[:home][:players]).each do |person_name, data|
-      home_score += data[:points]
+  (game_hash[:home][:players]).each do |player_name, player_info|
+      home_score += player_info[:points]
     end
-  (game_hash[:away][:players]).each do |person_name, data|
-      away_score += data[:points]
+  (game_hash[:away][:players]).each do |player_name, player_info|
+      away_score += player_info[:points]
     end
   team_scores = {home_team => home_score, away_team => away_score}
-  highest_scoring_team = team_scores.max_by { |team, score| score }[0]
+  winner = team_scores.max_by { |team, score| score }[0]
 end
 
 
