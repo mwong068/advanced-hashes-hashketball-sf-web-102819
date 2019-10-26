@@ -110,7 +110,6 @@ end
 
 
 def num_points_scored(player_name_input)
-  
   game_hash.each do |team_sides, team_info|
     team_info[:players].each do |player_name, player_info|
       if player_name == player_name_input
@@ -122,7 +121,6 @@ end
 
 
 def shoe_size(player_name_input)
-  
   game_hash.each do |team_sides, team_info|
     team_info[:players].each do |player_name, player_info|
       if player_name == player_name_input
@@ -134,7 +132,6 @@ end
 
 
 def team_colors(team_name_input)
-  
   game_hash.each do |team_sides, team_info|
     if team_info[:team_name] == team_name_input
       return team_info[:colors]
@@ -143,19 +140,14 @@ def team_colors(team_name_input)
 end
 
 
-### Find the team names
-
 def team_names
-  teams = []
-  
-  game_hash.each do |location, team_data|
-    teams.push(team_data[:team_name])
+  teams_by_name = []
+  game_hash.each do |team_sides, team_info|
+    teams_by_name.push(team_info[:team_name])
   end
-  teams
+  teams_by_name
 end
 
-
-### Find player jersey numbers
 
 def player_numbers(team)
   jersey_numbers = []
