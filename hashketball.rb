@@ -149,17 +149,16 @@ def team_names
 end
 
 
-def player_numbers(team)
-  jersey_numbers = []
-  
-  game_hash.each do |location, team_data|
-    if team_data[:team_name] == team
-      team_data[:players].each do |person_name, data|
-        jersey_numbers.push(data[:number])
+def player_numbers(team_name_input)
+  shirt_numbers = []
+  game_hash.each do |team_sides, team_info|
+    if team_info[:team_name] == team_name_input
+      team_info[:players].each do |player_name, player_info|
+        shirt_numbers.push(player_info[:number])
       end
     end
   end
-  jersey_numbers
+  shirt_numbers
 end
 
 
