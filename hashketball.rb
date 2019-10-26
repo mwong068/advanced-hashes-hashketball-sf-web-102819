@@ -243,7 +243,7 @@ end
 
 
 def long_name_steals_a_ton?
-  longest_name_player = player_with_the_longest_name
+  longest_name_player = player_with_longest_name
   result = false
   player_num_steals = {}
   
