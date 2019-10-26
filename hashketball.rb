@@ -162,15 +162,12 @@ def player_numbers(team_name_input)
 end
 
 
-### Find player stats
-
-def player_stats(player_name)
-  player_stats = {}
-   
-  game_hash.each do |location, team_data|
-    team_data[:players].each do |person_name, data|
-      if person_name == player_name
-        player_stats = player_stats.merge(data)
+def player_stats(player_name_input)
+  player_statistics = {}
+  game_hash.each do |team_sides, team_info|
+    team_info[:players].each do |player_name, player_info|
+      if player_name == player_name_input
+        player_statistics = player_statistics.merge(data)
       end
     end
   end
