@@ -176,29 +176,25 @@ end
 
 
 def big_shoe_rebounds
-  # Start with initial value assignments to be able to later update them and capture actual values
-  big_shoe_player = nil
-  big_shoe_player_rebounds = nil
-  player_shoe_sizes = {}
-  num_rebound = nil
+  biggest_shoe_player = nil
+  biggest_shoe_player_rebounds = nil
+  player_shoes = {}
+  num_of_rebound = nil
   
-  # Visit each player in the hash to populate the hash of player_shoe_sizes
-  game_hash.each do |location, team_data|
-    team_data[:players].each do |person_name, data|
-      player_shoe_sizes = player_shoe_sizes.merge({person_name => data[:shoe]})
+  game_hash.each do |team_sides, team_info|
+    team_info[:players].each do |player_name, player_info|
+      player_shoes = player_shoes.merge({player_name => player_info[:shoe]})
     end
   end
   
-  # Once the player_shoe_sizes hash has been populated, find out the name of the player with the biggest shoe size
-  big_shoe_player = player_shoe_sizes.max_by { |player, shoe_size| shoe_size }[0]
+  biggest_shoe_player = player_shoes.max_by { |player, shoe_size| shoe_size }[0]
 
-  # Once the name of that player has been established, find out the associated number of rebounds
-  game_hash.each_key do |location|
-    if (game_hash[location][:players]).include?(big_shoe_player)
-      num_rebound = game_hash[location][:players][big_shoe_player][:rebounds]
+  game_hash.each_key do |team_side|
+    if (game_hash[team_side][:players]).include?(biggest_shoe_player)
+      num_of_rebound = game_hash[team_side][:players][biggest_shoe_player][:rebounds]
     end
   end
-  num_rebound
+  num_of_rebound
 end
 
 
