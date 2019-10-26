@@ -171,7 +171,7 @@ def player_stats(player_name_input)
       end
     end
   end
-  player_stats
+  player_statistics
 end
 
 
