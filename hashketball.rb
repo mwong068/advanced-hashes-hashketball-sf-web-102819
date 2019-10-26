@@ -175,8 +175,6 @@ def player_stats(player_name_input)
 end
 
 
-### Find the number of rebounds associated with the player with the largest shoe size
-
 def big_shoe_rebounds
   # Start with initial value assignments to be able to later update them and capture actual values
   big_shoe_player = nil
