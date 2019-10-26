@@ -198,21 +198,19 @@ def big_shoe_rebounds
 end
 
 
-### Find the player who scores the most points
 
 def most_points_scored
-  player_points = {}
+  pointers_per_player = {}
   
-  game_hash.each do |location, team_data|
-    team_data[:players].each do |person_name, data|
-      player_points = player_points.merge({person_name => data[:points]})
+  game_hash.each do |team_sides, team_info|
+    team_info[:players].each do |player_name, player_info|
+      pointers_per_player = pointers_per_player.merge({player_name => player_info[:points]})
     end
   end
-  highest_scorer = player_points.max_by { |player, score| score }[0]
+  money_maker = pointers_per_player.max_by { |player, score| score }[0]
 end
 
 
-### Find the team that has the most points
 
 def winning_team
   home_score = 0
