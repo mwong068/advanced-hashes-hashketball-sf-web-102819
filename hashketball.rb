@@ -167,11 +167,11 @@ def player_stats(player_name_input)
   game_hash.each do |team_sides, team_info|
     team_info[:players].each do |player_name, player_info|
       if player_name == player_name_input
-        player_staties = player_statistics.merge(player_info)
+        player_statistics = player_statistics.merge(player_info)
       end
     end
   end
-  player_staties
+  player_statistics
 end
 
 
