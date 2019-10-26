@@ -229,35 +229,32 @@ def winning_team
 end
 
 
-### Find the player with the longest name
 
 def player_with_longest_name
-  players = []
+  all_players = []
   
-  game_hash.each do |location, team_data|
-    team_data[:players].each do |person_name, data|
-      players = players.push(person_name)
+  game_hash.each do |team_sides, team_info|
+    team_info[:players].each do |player_name, player_info|
+      all_players = players.push(player_name)
     end
   end
-  longest_name = players.max_by(&:length)
+  longest_name = all_players.max_by(&:length)
 end
 
 
-### If the player with the longest name had the most steals, return TRUE
-
 def long_name_steals_a_ton?
-  longest_name = player_with_longest_name
+  longest_name_player = player_with_the_longest_name
   result = false
-  player_steals = {}
+  player_num_steals = {}
   
-  game_hash.each do |location, team_data|
-    team_data[:players].each do |person_name, data|
-      player_steals = player_steals.merge({person_name => data[:steals]})
+  game_hash.each do |team_sides, team_info|
+    team_info[:players].each do |player_name, player_info|
+      player_num_steals = player_num_steals.merge({player_name => player_info[:steals]})
     end
   end
-  highest_stealer = player_steals.max_by { |player, steals| steals }[0]
+  most_steals = player_num_steals.max_by { |player, steals| steals }[0]
   
-  if longest_name == highest_stealer
+  if longest_name_player == most_steals
     result = true
   else
     result
